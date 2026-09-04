@@ -1,0 +1,139 @@
+{
+  "skill_name": "six-hats-solver",
+  "benchmark_type": "parameter_variation",
+  "description": "Test skill across thoroughness (quick/moderate/deep) and breadth (narrow/balanced/wide) parameters",
+  "test_cases": [
+    {
+      "id": 1,
+      "name": "strategic-decision",
+      "prompt": "Our SaaS startup is at $2M ARR with 4 engineers. Should we pursue aggressive growth ($500K fundraising, 5x target in 18 months) or lean profitability (2.5x in 3 years, full control)? Market window is narrowing with new competitors entering.",
+      "expected_output": "Clear recommendation with analysis of both paths",
+      "parameters": [
+        {"thoroughness": "quick", "breadth": "narrow"},
+        {"thoroughness": "quick", "breadth": "balanced"},
+        {"thoroughness": "quick", "breadth": "wide"},
+        {"thoroughness": "moderate", "breadth": "narrow"},
+        {"thoroughness": "moderate", "breadth": "balanced"},
+        {"thoroughness": "moderate", "breadth": "wide"},
+        {"thoroughness": "deep", "breadth": "narrow"},
+        {"thoroughness": "deep", "breadth": "balanced"},
+        {"thoroughness": "deep", "breadth": "wide"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "api-specification",
+      "prompt": "Complete this authentication API spec: 'POST /auth/login accepts email and password, returns a token if successful. Must handle invalid credentials, expired tokens, and rate limiting. Should work with both desktop and mobile clients.' Fill all gaps: status codes, error formats, rate limit rules, token expiration, concurrent sessions, security, monitoring, backwards compatibility.",
+      "expected_output": "Exhaustive specification addressing all gaps with internal consistency",
+      "parameters": [
+        {"thoroughness": "quick", "breadth": "narrow"},
+        {"thoroughness": "quick", "breadth": "balanced"},
+        {"thoroughness": "moderate", "breadth": "narrow"},
+        {"thoroughness": "moderate", "breadth": "balanced"},
+        {"thoroughness": "moderate", "breadth": "wide"},
+        {"thoroughness": "deep", "breadth": "balanced"},
+        {"thoroughness": "deep", "breadth": "wide"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "code-debugging",
+      "prompt": "Production crash in Python upload handler: 'NoneType has no attribute length' error occurs 0.3% of the time (150 failures/day from 50K uploads). Function reads file, validates it, processes it. Validation sometimes returns None instead of raising error. Critical path, expensive downtime. One engineer, one week available. What's the fix?",
+      "expected_output": "Root cause analysis, immediate mitigation, and long-term solution",
+      "parameters": [
+        {"thoroughness": "quick", "breadth": "narrow"},
+        {"thoroughness": "moderate", "breadth": "narrow"},
+        {"thoroughness": "moderate", "breadth": "balanced"},
+        {"thoroughness": "deep", "breadth": "balanced"}
+      ]
+    }
+  ],
+  "assertions": {
+    "strategic-decision": [
+      {
+        "name": "explores-both-paths",
+        "description": "Analysis examines both aggressive and lean growth paths"
+      },
+      {
+        "name": "quantifies-risks",
+        "description": "Identifies and quantifies risks for each option"
+      },
+      {
+        "name": "proposes-alternatives",
+        "description": "Suggests creative alternatives beyond the two given options"
+      },
+      {
+        "name": "emotional-landscape",
+        "description": "Explores stakeholder emotions and perspectives"
+      },
+      {
+        "name": "confidence-level",
+        "description": "Provides confidence level and reasoning for recommendation"
+      }
+    ],
+    "api-specification": [
+      {
+        "name": "status-codes-complete",
+        "description": "All relevant HTTP status codes defined with specific scenarios"
+      },
+      {
+        "name": "error-format-consistent",
+        "description": "Consistent error response format across all error cases"
+      },
+      {
+        "name": "rate-limiting-explicit",
+        "description": "Rate limiting rules are specific (requests/time window, per IP/email)"
+      },
+      {
+        "name": "security-comprehensive",
+        "description": "Covers HTTPS, token storage, hashing, certificate pinning, CORS"
+      },
+      {
+        "name": "edge-cases-covered",
+        "description": "Addresses concurrent sessions, token expiration, session invalidation"
+      },
+      {
+        "name": "internal-consistency",
+        "description": "No contradictions between components"
+      },
+      {
+        "name": "testing-guidance",
+        "description": "Includes testing checklist and deployment guidance"
+      }
+    ],
+    "code-debugging": [
+      {
+        "name": "root-cause-identified",
+        "description": "Identifies validation returning None as root cause"
+      },
+      {
+        "name": "immediate-mitigation",
+        "description": "Proposes rapid stopgap deployable within 1 week"
+      },
+      {
+        "name": "risks-analyzed",
+        "description": "Analyzes risks of different approaches"
+      },
+      {
+        "name": "long-term-solution",
+        "description": "Proposes permanent fix with testing strategy"
+      },
+      {
+        "name": "process-design",
+        "description": "Designs deployment process balancing speed and safety"
+      },
+      {
+        "name": "creative-alternatives",
+        "description": "Explores creative alternatives (feature flags, monitoring, gradual rollout)"
+      }
+    ]
+  },
+  "measurement_points": [
+    "pass_rate",
+    "total_tokens",
+    "duration_seconds",
+    "white_hat_gaps_identified",
+    "green_hat_alternatives_proposed",
+    "blue_hat_confidence_stated"
+  ]
+}
