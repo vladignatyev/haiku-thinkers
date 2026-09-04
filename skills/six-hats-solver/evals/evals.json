@@ -1,0 +1,33 @@
+{
+  "skill_name": "six-hats-solver",
+  "evals": [
+    {
+      "id": 1,
+      "name": "detective-puzzle",
+      "prompt": "Detective puzzle: A wealthy collector is found dead in their locked study. The body is cold, rigor mortis is complete. Three suspects: (1) The butler—was in town all day, has solid alibi. (2) The estranged daughter—needs money, was nearby but no witnesses. (3) The business partner—visited yesterday, known to be in financial trouble. The safe is open and empty. A glass of brandy sits half-full on the desk. The coroner estimates death 12-18 hours ago. What happened?",
+      "expected_output": "Comprehensive analysis of the detective puzzle from six distinct perspectives, leading to a synthesized theory of what happened, who likely did it, and what evidence matters most.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "strategy-decision",
+      "prompt": "Strategic decision: Our SaaS startup is at $2M ARR with 4 engineers and 2 sales reps. We can either (A) hire aggressively to reach $10M ARR in 18 months, or (B) stay lean and profitable, growing to $5M in 3 years. Option A requires $500K fundraising and high burn. Option B means slower market penetration but we maintain full control. The market window is narrowing—competitors are entering. What should we do?",
+      "expected_output": "Multi-perspective analysis that examines facts about the market and our financials, emotional stakes, risks of both paths, opportunities each unlocks, creative alternatives we haven't considered, and a clear synthesized recommendation with confidence level.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "specification-completion",
+      "prompt": "Complete this incomplete API specification: 'Create a user authentication endpoint that accepts email and password, returns a token if successful. Must handle invalid credentials, expired tokens, and rate limiting. Should work with both desktop and mobile clients.' Fill in gaps: specific status codes, error response formats, rate limit rules, token expiration time, how to handle concurrent sessions, security considerations, backwards compatibility, monitoring/logging needs.",
+      "expected_output": "Complete, exhaustive, internally consistent specification that addresses all gaps and edge cases while maintaining compatibility with both desktop and mobile clients.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "code-fix",
+      "prompt": "Code fix needed: We have a Python function that processes user uploads. It's crashing intermittently in production with 'NoneType has no attribute length' error. The function reads a file, validates it, then processes it. Validation sometimes returns None instead of raising an error. The crash happens 0.3% of the time with 50K daily uploads. It's in critical path so downtime is expensive. We have one engineer available this week. What's the fix?",
+      "expected_output": "Comprehensive analysis proposing root cause, immediate mitigation strategy, proper long-term fix, testing approach, and risk assessment of each approach.",
+      "files": []
+    }
+  ]
+}

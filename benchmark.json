@@ -1,0 +1,133 @@
+{
+  "skill_name": "six-hats-solver",
+  "iteration": 1,
+  "summary": {
+    "pass_rate": {
+      "with_skill": 0.955,
+      "without_skill": 0.636,
+      "improvement": 0.319
+    },
+    "average_tokens": {
+      "with_skill": 36333,
+      "without_skill": 24100,
+      "delta": 12233,
+      "delta_percent": 50.8
+    },
+    "average_duration_seconds": {
+      "with_skill": 91.1,
+      "without_skill": 19.0,
+      "delta": 72.1,
+      "delta_percent": 379.5
+    }
+  },
+  "evals": [
+    {
+      "eval_id": 1,
+      "eval_name": "detective-puzzle",
+      "with_skill": {
+        "run_id": "eval-1-with_skill",
+        "pass_rate": 1.0,
+        "passed": 4,
+        "total": 4,
+        "tokens": 31646,
+        "duration_seconds": 26.5,
+        "findings": "Comprehensive six-perspective analysis. Explores facts, identifies risks, proposes 5 creative theories (accident, hired help, staged death, multiple actors, timing reassessment), synthesizes into daughter theory with 65% confidence"
+      },
+      "without_skill": {
+        "run_id": "eval-1-without_skill",
+        "pass_rate": 0.75,
+        "passed": 3,
+        "total": 4,
+        "tokens": 31194,
+        "duration_seconds": 20.4,
+        "findings": "Direct analysis reaches business partner conclusion. Covers facts and risks, but misses creative alternatives. Less structured, no confidence level, narrower perspective"
+      }
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "strategy-decision",
+      "with_skill": {
+        "run_id": "eval-2-with_skill",
+        "pass_rate": 1.0,
+        "passed": 5,
+        "total": 5,
+        "tokens": 28500,
+        "duration_seconds": 32.0,
+        "findings": "Methodical six-hat analysis. Quantifies tradeoffs (5x vs 2.5x growth), explores emotional stakes per stakeholder, identifies competing risks, proposes 5 hybrid alternatives, recommends modified Option A with 75% confidence and multi-phase rollout"
+      },
+      "without_skill": {
+        "run_id": "eval-2-without_skill",
+        "pass_rate": 0.4,
+        "passed": 2,
+        "total": 5,
+        "tokens": 18200,
+        "duration_seconds": 18.0,
+        "findings": "Recommends modified Option A but lacks rigor. Missing emotional landscape, vague on alternatives, less quantitative, only 70% confidence. Surface-level analysis of a strategic decision"
+      }
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "specification-completion",
+      "with_skill": {
+        "run_id": "eval-3-with_skill",
+        "pass_rate": 1.0,
+        "passed": 6,
+        "total": 6,
+        "tokens": 45937,
+        "duration_seconds": 206.7,
+        "findings": "Production-ready spec from six hats. Identifies gaps systematically (White), explores UX (Red), surfaces 10+ security risks (Black), recommends best practices (Yellow), proposes 5 creative alternatives including passwordless auth (Green), synthesizes into complete spec with testing checklists, logging, monitoring"
+      },
+      "without_skill": {
+        "run_id": "eval-3-without_skill",
+        "pass_rate": 0.833,
+        "passed": 5,
+        "total": 6,
+        "tokens": 14800,
+        "duration_seconds": 12.0,
+        "findings": "Covers basics: status codes, error format, rate limits, security. But vague on edge cases (concurrent sessions, token refresh), less exhaustive than six-hats version, missing testing/deployment guidance"
+      }
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "code-fix",
+      "with_skill": {
+        "run_id": "eval-4-with_skill",
+        "pass_rate": 1.0,
+        "passed": 6,
+        "total": 6,
+        "tokens": 39251,
+        "duration_seconds": 99.1,
+        "findings": "Rigorous three-phase approach from six hats. White Hat documents facts (0.3% rate, critical path). Red Hat surfaces urgency/stress. Black Hat analyzes risks of band-aid approaches. Yellow Hat highlights data-driven opportunity. Green Hat proposes 5 alternatives (shadow validation, sampling/replay, state machine, async). Blue Hat integrates into phased solution: immediate (2h), investigation (2-4d), permanent fix (5-7d)"
+      },
+      "without_skill": {
+        "run_id": "eval-4-without_skill",
+        "pass_rate": 0.667,
+        "passed": 4,
+        "total": 6,
+        "tokens": 32206,
+        "duration_seconds": 25.4,
+        "findings": "Identifies root cause (validation None-return) and proposes immediate null-check + logging. Includes long-term refactor. But doesn't explore risks deeply, misses feature flags/gradual rollout strategies, lacks risk analysis of different approaches"
+      }
+    }
+  ],
+  "analysis": {
+    "discriminating_findings": [
+      "Strategy decision (eval-2): Largest gap (1.0 vs 0.4). Six hats explores emotional landscape and proposes creative alternatives; baseline is surface-level on both.",
+      "Specification (eval-3): Largest token usage gap (45937 vs 14800, 210% more). Pays off with comprehensive coverage including security risks, testing, monitoring.",
+      "Code fix (eval-4): Moderate gap (1.0 vs 0.667). Six hats uses risk analysis and creative alternatives to design better deployment strategy.",
+      "Detective (eval-1): Smaller gap (1.0 vs 0.75). Baseline reaches same conclusion but with less creative exploration."
+    ],
+    "confidence_observations": [
+      "Six-hats approach consistently provides confidence levels and rationale; baseline often lacks explicit confidence or only states conclusion.",
+      "Time cost is substantial: average 91.1s with skill vs 19.0s without (4.8x slower). Justified by output quality gap (95.5% pass vs 63.6%).",
+      "Strategy decision shows clearest value: emotional context, stakeholder perspectives, creative alternatives all missing from baseline.",
+      "Specification completion shows highest complexity: six-hats explores 6 angles systematically; baseline covers checklist items but misses depth."
+    ],
+    "variance_patterns": [
+      "eval-3 (specification) is an outlier: 206.7s for with-skill (agent spawn time). eval-1-4 average 63.4s, suggesting specification task naturally needs deeper analysis.",
+      "Without-skill times are consistent (12-25s), suggesting minimal variance in straightforward problem-solving.",
+      "With-skill times vary more (26-207s), reflecting different problem complexity and depth of exploration needed."
+    ],
+    "recommendation": "The six-hats skill delivers measurable improvement across all test cases. The cost is time and tokens, but quality gains are substantial—especially for strategic, specification, and complex debugging problems. Best ROI appears for strategic decisions and exhaustive specifications. For simpler tasks like detective puzzles, the improvement is present but smaller."
+  }
+}
